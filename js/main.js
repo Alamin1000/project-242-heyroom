@@ -122,7 +122,7 @@
           });
           let b = document.getElementById('h1');
           let bCont = `Das ist euer <br> gemeinsamer
-          <span class="cheap bg-theme2">Vibe</span> `
+          <span class="cheap bg-theme3">Vibe</span> `
           b.innerHTML = bCont
           anCount++;
           document.removeEventListener('scroll',toDo1);
@@ -131,6 +131,9 @@
       document.addEventListener('scroll', toDo1);
     }
   }
+
+
+
   
 
 })(jQuery);
