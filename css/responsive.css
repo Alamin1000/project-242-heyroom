@@ -141,6 +141,26 @@
     .hero-top-t .h1 .cheap {
         padding: 5px 11px 0;
     }
+
+
+    .x-slider .owl-stage {
+        --extra-width: 50;
+        display: flex;
+    }
+    .x-slide {
+        --scale: calc( (var(--this-width-number) + var(--extra-width)) / var(--this-width-number));
+        margin-top: calc(((var(--this-height) * var(--scale)) - var(--this-height)) / 2);
+        margin-bottom: calc(((var(--this-height) * var(--scale)) - var(--this-height)) / 2);
+        transition: 0.3s;
+        width: 100%;
+    }
+    .x-slider .owl-item {
+        display: flex;
+        align-items: center;
+    }
+    .center .x-slide {
+        transform: scale(var(--scale));
+    }
 }
 
 

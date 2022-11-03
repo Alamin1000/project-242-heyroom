@@ -355,6 +355,15 @@ p:last-child{
   text-align: center;
   transition: 0.3s;
 }
+[ hero-AS="1"] .hrc-v1 {
+  background: var(--theme__color1);
+}
+[ hero-AS="2"] .hrc-v1 {
+  background: var(--theme__color2);
+}
+[ hero-AS="3"] .hrc-v1 {
+  background: var(--theme__color3);
+}
 
 .hero-bottom-d {
 	margin: -99px 0 0;
@@ -377,6 +386,39 @@ p:last-child{
   text-align: center;
   background: linear-gradient(to right, var(--theme__color1), var(--theme__color2));
 }
+
+
+[class*="c-hero-animation"] {
+  opacity: 0;
+  display: none;
+}
+[ hero-AS="0"] .c-hero-animation0 {
+  animation: fadeIn 0S forwards;
+  display: block;
+}
+[ hero-AS="1"] .c-hero-animation1 {
+  animation: fadeIn 0S forwards;
+  display: block;
+}
+[ hero-AS="2"] .c-hero-animation2 {
+  animation: fadeIn 0.3S forwards;
+  display: block;
+}
+[ hero-AS="3"] .c-hero-animation3 {
+  animation: fadeIn 0.3S forwards;
+  display: block;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+
 /* ---hero-section---end */
 
 

@@ -27,13 +27,15 @@
     responsive:{
         0:{
           items: 1,
-          margin: 10,
+          margin: 25,
           stagePadding: 80,
+          center:true
         },
         390:{
           items: 1,
-          margin: 20,
+          margin: 30,
           stagePadding: 120,
+          center:true
         },
         565:{
           items: 2,
@@ -53,86 +55,30 @@
   });
 
 
-  // hero-animation 
+
+  //hero-animation
   {
     const hero = document.getElementById('hero-section');
-    const heroHV = hero.offsetHeight
-    let anCount = 0;
-    let preCount = 0;
+    const heroHV = hero.offsetHeight;
+    let animationPosition = 0;
+    let aCount = 4;
+    let currentC = "hero-A0"
     const windHeight = window.innerHeight;
+    hero.style.height = (heroHV  + (windHeight * (aCount - 1))) + "px";
     {
-      hero.style.height = (heroHV  + (windHeight * (1 + preCount))) + "px";
-      preCount++;
-      let toDo1 = function(){
-        const windPos = window.scrollY;
-        let check = windPos > (windHeight * (0.3 + anCount));
-        if(check) {
-          var preA = document.querySelectorAll('.hb-cheap');
-          var a = document.querySelectorAll('.hrc-v1');
-          preA.forEach(elmN => {
-            elmN.style.background = 'transparent';
-          });
-          a.forEach(elmN => {
-            elmN.style.background = '#64F0C8';
-          });
-          anCount++;
-          document.removeEventListener('scroll',toDo1)
+      for(let i=0; i < aCount; i++) {
+        let toDo1 = function(){
+          const windPos = window.scrollY;
+          let check = windPos > (windHeight * (0.3 + i -1)) && windPos < (windHeight * (0.3 + i));
+          if(check) {
+            document.querySelector('body').setAttribute('hero-AS', (i));
+            animationPosition = i;
+          }
         }
+        document.addEventListener('scroll', toDo1);
       }
-      document.addEventListener('scroll', toDo1);
-    }
-    {
-      hero.style.height = (heroHV  + (windHeight * (1 + preCount))) + "px";
-      preCount++;
-      let toDo1 = function(){
-        const windPos = window.scrollY;
-        let check = windPos > (windHeight * (0.3 + anCount));
-        if(check) {
-          var preA = document.querySelectorAll('.hb-cheap');
-          var a = document.querySelectorAll('.hrc-v2');
-          preA.forEach(elmN => {
-            elmN.style.background = 'transparent';
-          });
-          a.forEach(elmN => {
-            elmN.style.background = '#9664FF';
-          });
-          let b = document.getElementById('h1');
-          let bCont = `Das ist der  <span class="cheap bg-theme2">Vibe</span> <br> der BEWERBER*IN`
-          b.innerHTML = bCont
-          anCount++;
-          document.removeEventListener('scroll',toDo1)
-        }
-      }
-      document.addEventListener('scroll', toDo1);
-    }
-    {
-      hero.style.height = (heroHV  + (windHeight * (1 + preCount))) + "px";
-      preCount++;
-      let toDo1 = function(){
-        const windPos = window.scrollY;
-        let check = windPos > (windHeight * (0.3 + anCount));
-        if(check) {
-          var preA = document.querySelectorAll('.hb-cheap');
-          var a = document.querySelectorAll('.hrc-v2');
-          preA.forEach(elmN => {
-            elmN.style.background = 'transparent';
-          });
-          a.forEach(elmN => {
-            elmN.style.background = '#3CB4CD';
-          });
-          let b = document.getElementById('h1');
-          let bCont = `Das ist euer <br> gemeinsamer
-          <span class="cheap bg-theme3">Vibe</span> `
-          b.innerHTML = bCont
-          anCount++;
-          document.removeEventListener('scroll',toDo1);
-        }
-      }
-      document.addEventListener('scroll', toDo1);
     }
   }
-
-
 
   
 
@@ -151,6 +97,17 @@ $(document).ready(function(){
 
 
 
+$(window).on('load',adjustRatio);
+function adjustRatio() {
+  $('.know-area').each(function(){
+    var Width = $(this).outerWidth();
+    $(this).css('--this-width', Width + 'px');
+    $(this).css('--this-width-number', Width);
+    var Height = $(this).outerHeight();
+    $(this).css('--this-height', Height + 'px');
+    $(this).css('--this-height-number', Height);
+    });
+}
 
 
 
